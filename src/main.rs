@@ -1,4 +1,4 @@
-use std::env::args;
+use std::env::{args, Args};
 
 struct Console {
     first_num: f32,
@@ -7,16 +7,17 @@ struct Console {
 }
 
 fn main() {
-    let console: Console = Console::new(args().collect());
+    let console: Console = Console::new();
     console.calculator();
 }
 
 impl Console {
-    fn new(arg: Vec<String>) -> Console {
+    fn new() -> Console {
+        let mut args: Args = args();
         Console {
-            first_num: arg[1].parse().unwrap(),
-            second_num: arg[3].parse().unwrap(),
-            operator: arg[2].parse().unwrap(),
+            first_num: args.nth(1).unwrap().parse::<f32>().unwrap(),
+            operator: args.next().unwrap().parse::<char>().unwrap(),
+            second_num: args.next().unwrap().parse::<f32>().unwrap(),
         }
     }
 
