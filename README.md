@@ -11,7 +11,7 @@ This is a simple command-line calculator application written in Rust. It takes t
 To build the project, navigate to the root directory and run:
 
 ```bash
-cargo build
+cargo build --release
 ```
 
 To run the calculator, use the following format:
